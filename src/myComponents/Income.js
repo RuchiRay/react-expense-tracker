@@ -2,7 +2,7 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useGlobalContext } from "../Context";
 export const Income = () => {
-  const { income, incomeBox, expenseBox } = useGlobalContext();
+  const { income, incomeBox } = useGlobalContext();
   const incomeArray = incomeBox.filter((income)=>{
     return income.amount>0
 })
@@ -40,7 +40,6 @@ export const Income = () => {
     },
    
   }
-  console.log(chartOptions);
   return (
     <div className="income-box">
       <h3>Income</h3>

@@ -2,7 +2,11 @@ import React from "react";
 import { Doughnut } from "react-chartjs-2";
 import { useGlobalContext } from "../Context";
 export const Expense = () => {
-  const { expense, expenseBox } = useGlobalContext();
+  const { expense, expenseBox} = useGlobalContext();
+  
+ 
+  let chartData = [];
+  let chartOptions = [];
   const expenseArray = expenseBox.filter((expense) => {
     return expense.amount > 0;
   });
@@ -14,7 +18,7 @@ export const Expense = () => {
     chartDataSets = [...chartDataSets, exp.amount];
     bgColors = [...bgColors, exp.color];
   }
-  const chartData = {
+   chartData = {
     labels: chartLabel,
     datasets: [
       {
@@ -26,7 +30,7 @@ export const Expense = () => {
     ],
   };
 
-  const chartOptions = {
+   chartOptions = {
     plugins: {
       title: {
         display: true,
@@ -38,10 +42,11 @@ export const Expense = () => {
       },
     },
   };
-
+  
   return <div className="expense-box">
       <h3>Expense</h3>
       <div className="chart">
+       
       <Doughnut
         data={chartData}
         options={chartOptions}

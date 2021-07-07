@@ -3,7 +3,6 @@ import { AiFillDollarCircle, AiFillDelete } from "react-icons/ai";
 import { useGlobalContext } from "../Context";
 export const TrackerBox = () => {
   const { trackerBox,removeItem } = useGlobalContext();
-  console.log(trackerBox);
   return (
     <div className='tracker-box'>
       {trackerBox.map((transaction) => {

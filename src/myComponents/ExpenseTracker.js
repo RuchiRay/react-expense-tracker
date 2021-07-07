@@ -27,7 +27,7 @@ export const ExpenseTracker = () => {
     <div className="main">
       <h3>Expense Tracker</h3>
       <div className="balance">
-        <b>Total balance :{balance}</b>
+        Total balance :${balance}
       </div>
       <div className="expense-wrapper">
         <form className="expense-form" onSubmit={(e) => handleSubmit(e)}>

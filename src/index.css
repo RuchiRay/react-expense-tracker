@@ -5,23 +5,36 @@
     box-sizing: border-box;
 }
 body{
-   background: url(./Animated\ Shape\ \(1\).svg);
+   background: url(./Animated\ Shape\ \(2\).svg);
+   background-repeat: no-repeat;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
 }
 .App{
     display: flex;
     width: 100%;
     justify-content: center;
+    align-items: center;
 }
 .main,.income-box,.expense-box{
     background: aliceblue;
-    min-width: 400px;
-    
     margin: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
+.chart{
+padding-bottom: 25px;
+}
+.main{
+    padding: 0px 20px;
+}
+.income-box,.expense-box{
+    padding-top: 25px;
+   }
 .main h3{
     margin: 20px;
     font-size: 1.8rem;
@@ -71,6 +84,7 @@ body{
     margin-top: 30px;
     max-height: 180px;
     overflow-y: scroll;
+    padding-bottom: 30px;
 }
 .transaction-wrapper{
     display: flex;
@@ -99,4 +113,23 @@ font-size: 35px;
 span{
     margin: 5px 10px 5px 0px;
     font-size: 14px;
+}
+@media screen and (max-width: 1350px){
+    .App{
+        flex-direction: column;
+    }
+}
+@media screen and (max-width: 500px){
+    .main{
+        width: 300px;
+        padding: 0;
+    }
+    .main,.expense-box,.income-box{
+        margin: 0;
+        margin-bottom: 20px;
+    }
+    .select{
+    width: 100px;
+    height: 30px;
+    }
 }

@@ -2,29 +2,21 @@ export const reducer = (state, action) => {
   const { type, payLoad } = action;
   let { types, incomeCategory,expenseCategory, amount, date, incomeBox, expenseBox,trackerBox } = state;
   if (type === "CHANGE TYPE") {
-    console.log("inside reducer", payLoad);
     return { ...state, types: payLoad };
   }
   if (type === "CHANGE CATEGORY") {
-    console.log("inside reducer", payLoad);
     if(types==='Income')
     return { ...state, incomeCategory: payLoad };
     else
     return {...state,expenseCategory:payLoad}
   }
   if (type === "CHANGE AMOUNT") {
-    console.log("changing amount to", payLoad);
     return { ...state, amount: payLoad };
   }
   if (type === "CHANGE DATE") {
-    console.log("changing date to", payLoad);
     return { ...state, date: payLoad };
   }
   if (type === "SUBMIT") {
-    console.log(types);
-    console.log(incomeCategory,expenseCategory);
-    console.log(amount);
-    console.log(date);
     if(types==='Expense'){
         let item = {id :new Date().getTime().toString(), color:'red',field:expenseCategory,money:amount,date:date}
         let tempTrackerBox = [...trackerBox,item]
@@ -55,7 +47,6 @@ export const reducer = (state, action) => {
             else
              return income;
           });
-          console.log('printing after adding ',tempBox);
           return {...state,incomeBox:tempBox,trackerBox:tempTrackerBox};
     }
     
@@ -69,13 +60,11 @@ export const reducer = (state, action) => {
           let tempBox = incomeBox.map((income)=>{
               if(income.type===field){
                   let newAmount = income.amount - money
-                  console.log('printing money type in income', newAmount);
                   return { ...income, amount:newAmount}
               }
               else
               return income;
           })
-          console.log('printing box after removing',tempBox);
           return {...state,incomeBox:tempBox, trackerBox:tempTrackerBox}
       }
       else
@@ -83,7 +72,6 @@ export const reducer = (state, action) => {
         let tempBox = expenseBox.map((expense)=>{
             if(expense.type===field){
                 let newAmount = expense.amount - money
-                console.log('printing money type in expense',newAmount);
                 return {...expense,amount:newAmount}
             }
             else
@@ -95,7 +83,6 @@ export const reducer = (state, action) => {
       
   }
   if(type==='CALC BALANCE'){
-      console.log('calculating balance');
       let income = 0;
       for(let inc of incomeBox){
         income = income+inc.amount;
@@ -105,16 +92,8 @@ export const reducer = (state, action) => {
           expense = expense+exp.amount
       }
       let finalBalance = income-expense
-      console.log('income = ',income);
-      console.log('expense = ',expense);
       return {...state,income:income,expense:expense, balance:finalBalance}
   }
   
   throw new Error("no matching action type");
 };
-// const reducer = (state, action) => {
-//     if(action.type)
-//     throw new Error('no matching action type')
-//   }
-
-//   export default reducer

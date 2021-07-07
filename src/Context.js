@@ -23,39 +23,33 @@ const getLocalStorage = ()=>{
     return initialState
 }
 let box = getLocalStorage();
-console.log(box);
+
 const AppProvider = ({children})=>{
      const [state, dispatch] = useReducer(reducer,box);
 
     const changeType = (newType)=>{
-        console.log('changing type to',newType);       
         dispatch({type:'CHANGE TYPE', payLoad: newType})
     }
 
     const handleCategory = (newCategory)=>{
-        console.log('changing category to',newCategory);
         dispatch({type:'CHANGE CATEGORY',payLoad:newCategory})
     }
 
     const handleAmount = (newAmount)=>{
-        console.log('changing amount to',newAmount);
         dispatch({type:'CHANGE AMOUNT',payLoad:newAmount})
         
     }
 
     const handleDate = (newDate)=>{
-        console.log('changing date to',newDate); 
         dispatch({type:'CHANGE DATE',payLoad:newDate})
     }
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        console.log('submitted');
         dispatch({type:'SUBMIT'})     
     }
 
     const removeItem = (id,type,money,field)=>{
-        console.log('delete item');     
         dispatch({type:'REMOVE',payLoad:{id,type,money,field}})
       
     }
