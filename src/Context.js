@@ -61,10 +61,12 @@ const AppProvider = ({children})=>{
    
     useEffect(() => {
        calcBalance();
-       localStorage.setItem("list", JSON.stringify(state));
+       
      
       }, [state.trackerBox])
-
+    useEffect(()=>{
+        localStorage.setItem("list", JSON.stringify(state));
+    })
      
     return (
         <AppContext.Provider value={{...state,changeType,handleCategory,handleAmount,handleDate,handleSubmit,removeItem}}>{children}</AppContext.Provider>
