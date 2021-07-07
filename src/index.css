@@ -15,6 +15,7 @@ body{
 .main,.income-box,.expense-box{
     background: aliceblue;
     min-width: 400px;
+    
     margin: 20px;
     display: flex;
     flex-direction: column;
