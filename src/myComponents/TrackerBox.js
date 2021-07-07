@@ -5,22 +5,21 @@ export const TrackerBox = () => {
   const { trackerBox,removeItem } = useGlobalContext();
   console.log(trackerBox);
   return (
-    <div>
-      <p>displaying tracker box</p>
+    <div className='tracker-box'>
       {trackerBox.map((transaction) => {
         const  {id,color,field,money,date,type} = transaction
         return (
           <div className="transaction-wrapper" key={id}>
-            <p className={color}>
-              <AiFillDollarCircle />
+            <p >
+              <AiFillDollarCircle className = {color} />
             </p>
             <div className="transact">
               <div className="trans-dsc">
                 <p>{field}</p>
-                <span>{money}</span>
+                <span>${money}</span>
                 <span>{date}</span>
               </div>
-              <button className="delete" onClick={()=>removeItem(id,type,money)} >
+              <button className="delete" onClick={()=>removeItem(id,type,money,field)} >
                 <AiFillDelete />
               </button>
             </div>

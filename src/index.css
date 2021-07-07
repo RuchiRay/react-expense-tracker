@@ -1,3 +1,101 @@
+*{
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 body{
-    /* background: url(./Colored\ Shapes\ \(1\).svg); */
+   background: url(./Animated\ Shape\ \(1\).svg);
+}
+.App{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.main,.income-box,.expense-box{
+    background: aliceblue;
+    min-width: 400px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.main h3{
+    margin: 20px;
+    font-size: 1.8rem;
+}
+.balance{
+    font-size: 1.3rem;
+    margin-bottom: 30px;
+}
+.expense-form{
+    display: flex;
+    flex-direction: column;
+}
+.form-one,.form-two{
+    display: flex;
+    justify-content: center;
+}
+.form-two{
+    margin-bottom: 10px;
+}
+.select{
+    background-color:transparent;
+    width: 140px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid black;
+    margin: 0 10px 25px 10px;
+}
+.create{
+    padding: 5px;
+    text-transform: uppercase;
+    background-color: #0E2A47;
+    border: none;
+    color: aliceblue;
+    letter-spacing: 2px;
+    font-weight: bold;
+    cursor: pointer;
+    /* transition:  all 0.3s ease-in; */
+}
+.create:hover{
+    color: #0E2A47;
+    background-color: aliceblue;
+    border: 2px solid #0E2A47;
+}
+
+/* tracker box */
+.tracker-box{
+    margin-top: 30px;
+    max-height: 180px;
+    overflow-y: scroll;
+}
+.transaction-wrapper{
+    display: flex;
+   align-items: center;
+}
+.green{
+color: green;
+font-size: 35px;
+}
+.red{
+    color: red;
+    font-size: 35px; 
+}
+.transact{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 10px;
+}
+.delete{
+    border: none;
+    background: transparent;
+    font-size: 25px;
+    cursor: pointer;
+}
+span{
+    margin: 5px 10px 5px 0px;
+    font-size: 14px;
 }

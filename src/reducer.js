@@ -28,6 +28,7 @@ export const reducer = (state, action) => {
     if(types==='Expense'){
         let item = {id :new Date().getTime().toString(), color:'red',field:expenseCategory,money:amount,date:date}
         let tempTrackerBox = [...trackerBox,item]
+        console.log(tempTrackerBox);
         let tempBox = expenseBox.map((expense) => {
             if (expense.type === expenseCategory) 
             {
@@ -60,13 +61,13 @@ export const reducer = (state, action) => {
     
   }
   if(type==='REMOVE'){
-      const {id,type,money} = payLoad
+      const {id,type,money,field} = payLoad
       let tempTrackerBox = trackerBox.filter((item)=>{
         return item.id!==id
     })
       if(type==='Income'){
           let tempBox = incomeBox.map((income)=>{
-              if(income.id===id){
+              if(income.type===field){
                   let newAmount = income.amount - money
                   console.log('printing money type in income', newAmount);
                   return { ...income, amount:newAmount}
@@ -80,7 +81,7 @@ export const reducer = (state, action) => {
       else
       {
         let tempBox = expenseBox.map((expense)=>{
-            if(expense.id===id){
+            if(expense.type===field){
                 let newAmount = expense.amount - money
                 console.log('printing money type in expense',newAmount);
                 return {...expense,amount:newAmount}
@@ -108,6 +109,7 @@ export const reducer = (state, action) => {
       console.log('expense = ',expense);
       return {...state,income:income,expense:expense, balance:finalBalance}
   }
+  
   throw new Error("no matching action type");
 };
 // const reducer = (state, action) => {

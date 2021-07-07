@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer, useContext } from "react";
+import React, {  useEffect, useReducer, useContext } from "react";
 import { reducer } from "./reducer";
 import { incomeCategories,expenseCategories } from './myComponents/data'
 const AppContext = React.createContext();
@@ -54,21 +54,24 @@ const AppProvider = ({children})=>{
         dispatch({type:'SUBMIT'})     
     }
 
-    const removeItem = (id,type,money)=>{
+    const removeItem = (id,type,money,field)=>{
         console.log('delete item');     
-        dispatch({type:'REMOVE',payLoad:{id,type,money}})
+        dispatch({type:'REMOVE',payLoad:{id,type,money,field}})
       
     }
 
     const calcBalance = ()=>{
         dispatch({type:'CALC BALANCE'})
     }
+
+   
     useEffect(() => {
        calcBalance();
        localStorage.setItem("list", JSON.stringify(state));
-       let box = getLocalStorage();
-       console.log(box);
+     
       }, [state.trackerBox])
+
+     
     return (
         <AppContext.Provider value={{...state,changeType,handleCategory,handleAmount,handleDate,handleSubmit,removeItem}}>{children}</AppContext.Provider>
       );
