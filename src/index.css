@@ -71,12 +71,12 @@ padding-bottom: 25px;
     letter-spacing: 2px;
     font-weight: bold;
     cursor: pointer;
+    border: 2px solid #0E2A47;
     /* transition:  all 0.3s ease-in; */
 }
 .create:hover{
     color: #0E2A47;
     background-color: aliceblue;
-    border: 2px solid #0E2A47;
 }
 
 /* tracker box */

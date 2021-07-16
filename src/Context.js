@@ -26,7 +26,6 @@ let box = getLocalStorage();
 
 const AppProvider = ({children})=>{
      const [state, dispatch] = useReducer(reducer,box);
-
     const changeType = (newType)=>{
         dispatch({type:'CHANGE TYPE', payLoad: newType})
     }
@@ -46,7 +45,8 @@ const AppProvider = ({children})=>{
 
     const handleSubmit = (e)=>{
         e.preventDefault();
-        dispatch({type:'SUBMIT'})     
+        dispatch({type:'SUBMIT'})  
+        
     }
 
     const removeItem = (id,type,money,field)=>{
@@ -60,8 +60,7 @@ const AppProvider = ({children})=>{
 
    
     useEffect(() => {
-       calcBalance();
-       
+       calcBalance(); 
      
       }, [state.trackerBox])
     useEffect(()=>{

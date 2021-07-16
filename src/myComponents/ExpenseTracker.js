@@ -5,6 +5,8 @@ import { useGlobalContext } from "../Context";
 export const ExpenseTracker = () => {
   const {
     types,
+    incomeCategory,
+    expenseCategory,
     amount,
     date,
     balance,
@@ -17,25 +19,23 @@ export const ExpenseTracker = () => {
   let categoryArray = [];
   let defaultCategory = "";
   if (types === "Income") {
-    categoryArray = [...incomeCategories];
-    defaultCategory = incomeCategories[0];
+    categoryArray = incomeCategories;
+    defaultCategory = incomeCategory;
   } else {
-    categoryArray = [...expenseCategories];
-    defaultCategory = expenseCategories[0];
+    categoryArray = expenseCategories;
+    defaultCategory = expenseCategory;
   }
   return (
     <div className="main">
       <h3>Expense Tracker</h3>
-      <div className="balance">
-        Total balance :${balance}
-      </div>
+      <div className="balance">Total balance :${balance}</div>
       <div className="expense-wrapper">
         <form className="expense-form" onSubmit={(e) => handleSubmit(e)}>
           <div className="form-one">
             <div className="type">
               <p>Type</p>
               <select
-                defaultValue={types}
+                value={types}
                 onChange={(e) => changeType(e.target.value)}
                 className="select"
               >
@@ -46,14 +46,14 @@ export const ExpenseTracker = () => {
             <div className="category">
               <p>Category</p>
               <select
-                defaultValue={defaultCategory}
+                value={defaultCategory}
                 onChange={(e) => handleCategory(e.target.value)}
                 className="select"
               >
-                {categoryArray.map((categorySinge, index) => {
+                {categoryArray.map((category) => {
                   return (
-                    <option key={index} value={categorySinge.type}>
-                      {categorySinge.type}
+                    <option key={category.type} value={category.type}>
+                      {category.type}
                     </option>
                   );
                 })}
@@ -80,7 +80,9 @@ export const ExpenseTracker = () => {
               />
             </div>
           </div>
-          <button type="submit" className='create'>Create</button>
+          <button type="submit" className="create">
+            Create
+          </button>
         </form>
         <TrackerBox />
       </div>
